@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Credit Card Information </h3>
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+
+                        <label>Card Number</label>
+                        <input type="text" class="form-control" placeholder="Card Number"
+                               value="{{ card.credit_card_num }}" readonly/>
+
+                        <label>Expire Date</label>
+                        <input type="text" class="form-control" placeholder="Expire Date"
+                               value="{{ card.expire_date }}" readonly/>
+
+                        <label>Masked Number</label>
+                        <input type="text" class="form-control" placeholder="Masked Number"
+                               value="{{ card.masked_num}}" readonly/>
+
+                        <label>Limit</label>
+                        <input type="text" class="form-control" placeholder="Limit"
+                               value="{{card.limit }}" readonly/>
+                        <label>Current Balance</label>
+                        <input type="text" class="form-control" placeholder="Current Balance"
+                               value="{{card.curr_balance}}" readonly/>
+                    </div>
+
+{#                    <button type="submit" class="btn btn-primary" onclick="alert('Update Successfully!')">Update Limit</button>#}
+                    <a class="btn btn-primary" href="">Back to Main Page</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

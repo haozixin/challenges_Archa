@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Update The User's Credit Limit </h3>
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+
+                        <label>User ID</label>
+                        <input type="text" class="form-control" placeholder="User ID"
+                               value="{{ user.id }}" disabled/>
+                        <label>User Name</label>
+                        <input type="text" class="form-control" placeholder="User Name"
+                               value="{{ user.name }}" disabled/>
+                        <hr>
+                        Card Information <br><br>
+                        <label>Card Number</label>
+                        <input type="text" class="form-control" placeholder="Card Number"
+                               value="{{ credit_card.credit_card_num }}"disabled/>
+                        <label>Expire Date</label>
+                        <input type="text" class="form-control" placeholder="Expire Date"
+                               value="{{ credit_card.expire_date }}"disabled/>
+                        <label>Limit</label>
+                        <input type="text" class="form-control" placeholder="Limit"
+                               value="{{ credit_card.limit }}" disabled/>
+                        <label>New Limit</label>
+                        <input type="text" class="form-control" placeholder="New Limit" name = "limit"
+                               value="{{ credit_card.limit }}"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" onclick="alert('Update Successfully!')">Update Limit</button>
+                    <a class="btn btn-primary" href="/users/list/">Back to User List</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="javascript:void(0)" onclick="alert('The function is coming!')">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                Add User
+            </a>
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                User List
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Operators</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in users %}
+                    <tr>
+                        <th>{{ obj.id }}</th>
+                        <td>{{ obj.name }}</td>
+                        <td>{{ obj.email }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="/users/{{ obj.id }}/edit/">update limit</a>
+{#                            <a class="btn btn-danger btn-xs" href="/depart/delete/?nid={{ obj.id }}">delete</a>#}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
