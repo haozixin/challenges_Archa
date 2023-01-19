@@ -17,6 +17,12 @@ class UserInfo(models.Model):
     password = models.CharField(max_length=64)
     user_type = models.SmallIntegerField(choices=[(1, 'Admin'), (2, 'User')], default=2)
     company = models.ForeignKey(to="Company", to_field="id", on_delete=models.CASCADE, default=None)
+    # union primary key for challenge2 (two companies now)
+    class Meta:
+        unique_together = [
+            ("name", "company"),
+        ]
+
 
     def __str__(self):
         return self.name

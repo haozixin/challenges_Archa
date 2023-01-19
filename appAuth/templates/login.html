@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
     <style>
         .account {
@@ -26,8 +26,8 @@
 </head>
 <body>
 <div class="account">
-    <h2>用户登录</h2>
-    <form method="post" novalidate>
+    <h2>Sign in</h2>
+    <form method="POST" novalidate>
         {% csrf_token %}
         <div class="form-group">
             <label>Username</label>
@@ -39,19 +39,13 @@
             {{ form.password }}
             <span style="color: red;">{{ form.password.errors.0 }}</span>
         </div>
-{#        <div class="form-group">#}
-{#            <label for="id_code">图片验证码</label>#}
-{#            <div class="row">#}
-{#                <div class="col-xs-7">#}
-{#                    {{ form.code }}#}
-{#                    <span style="color: red;">{{ form.code.errors.0 }}</span>#}
-{#                </div>#}
-{#                <div class="col-xs-5">#}
-{#                    <img id="image_code" src="/image/code/" style="width: 125px;">#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-        <input type="submit" value="登 录" class="btn btn-primary">
+        <div class="form-group">
+            <label>Company</label>
+            {{ form.company }}
+            <span style="color: red;">{{ form.password.errors.0 }}</span>
+        </div>
+
+        <input type="submit" value="Sign in" class="btn btn-primary">
     </form>
 </div>
 

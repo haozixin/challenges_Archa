@@ -15,7 +15,7 @@ def user_list(request):
     if current_user.get_user_type_display() == 'Admin':
         print("admin")
         # get users data from database
-        users = models.UserInfo.objects.all()
+        users = models.UserInfo.objects.filter(company_id=current_user.company_id).all()
         return render(request, 'user_list.html', {'users': users})
     return render(request, 'userpage.html')
 
@@ -50,7 +50,7 @@ def card_info(request):
         current_user = request.session.get('user_info')
         card = models.Credit_card.objects.filter(host=current_user['id']).first()
 
-        # print(card.host)
         return render(request, 'card_info.html', {'card': card})
+
 
 

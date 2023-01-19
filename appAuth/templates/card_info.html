@@ -1,15 +1,22 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
+    <script>
+    {#alert(typeof {{ card }})#}
+        if (typeof {{card}} == 'undefined') {
+            alert("You don't have a credit card yet!");
+        }
+    </script>
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"> Credit Card Information </h3>
             </div>
             <div class="panel-body">
+
                 <form method="post">
                     {% csrf_token %}
+
                     <div class="form-group">
 
                         <label>Card Number</label>
@@ -33,9 +40,10 @@
                     </div>
 
 {#                    <button type="submit" class="btn btn-primary" onclick="alert('Update Successfully!')">Update Limit</button>#}
-                    <a class="btn btn-primary" href="">Back to Main Page</a>
+                    <a class="btn btn-primary" href="/users/list">Back to Main Page</a>
                 </form>
             </div>
         </div>
     </div>
+
 {% endblock %}

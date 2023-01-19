@@ -7,7 +7,7 @@ class AuthMiddleware(MiddlewareMixin):
     def process_request(self, request):
         # 0.Exclude pages that do not require a login to access
         #   request.path_info     get the URL that the current user request for --- (/login/)
-        if request.path_info in ["/login/", "/image/code/"]:
+        if request.path_info in ["/login/", "/admin/login/?next=/admin/"]:
             return
 
         # 1.read current user's session information. The user has been login if we can get the information
