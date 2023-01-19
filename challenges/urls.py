@@ -18,7 +18,7 @@ from django.urls import path
 from appAuth import views, account
 
 urlpatterns = [
-
+    path('', account.login),
     path('admin/', admin.site.urls),
     path('index/', views.index),
     path('users/list/', views.user_list),

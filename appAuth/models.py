@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Create your models here.
+# Since there is only two type of users, I decided to use an attribute "user_type" to distinguish them instead of a class
 #
 # class UserTypes(models.Model):
 #     title = models.SmallIntegerField(choices=[(1, 'Admin'), (2, 'User')], default=2)
