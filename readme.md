@@ -1,7 +1,7 @@
 
 - Using Python/Django + mySqlite3 
 - short demonstration video link: https://youtu.be/Icv1oRV-NJM
-- Assupmtions: 
+- Assumptions: 
   1. Each user account has a unique name in one company
 ## Authorization Idea:
   User can login with username and password. Website can check if the user's username and password are correct. If the user's username and password are correct via comparing the data in the database, the user can access the website.
