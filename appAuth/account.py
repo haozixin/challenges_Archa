@@ -1,9 +1,11 @@
+from io import BytesIO
+
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from appAuth.utils.verify_code import check_code
 from appAuth import models
-
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='username',
@@ -44,12 +46,14 @@ def login(request):
         company = form.cleaned_data['company']
         # we already assume that each username in a company is unique
         user = models.UserInfo.objects.filter(name=username, password=password, company=company).first()
-        # get company name based on company id
-        company_name = models.Company.objects.filter(id=user.company_id).first()
-        print(company_name)
+
         if user:
             # login successfully
             # generate random String as session id and save it into cookie
+            # get company name based on company id
+            company_name = models.Company.objects.filter(id=user.company_id).first()
+            print(CODE)
+
             request.session['user_info'] = {'id': user.id, 'name': user.name, 'company': str(company_name), 'company_id': user.company_id}
             # if valid, redirect to user list page
             return redirect('/users/list/')
@@ -60,3 +64,11 @@ def login(request):
 def logout(request):
     request.session.clear()
     return redirect('/login/')
+
+
+def get_image_code(request):
+    img, code = check_code()
+    # save as bytesIO
+    stream = BytesIO()
+    img.save(stream, 'png')
+    return HttpResponse(stream.getvalue(), {'code': code})

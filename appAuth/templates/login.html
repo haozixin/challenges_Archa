@@ -42,7 +42,22 @@
         <div class="form-group">
             <label>Company</label>
             {{ form.company }}
-            <span style="color: red;">{{ form.password.errors.0 }}</span>
+{#            <span style="color: red;">{{ form.password.errors.0 }}</span>#}
+        </div>
+
+        <div class="form-group">
+            <label for="id_code">Verification Code</label>
+            <div class="row">
+                <div class="col-xs-7">
+{#                    {{ form.code }}#}
+                    <input type="text" name="code" id="id_code" class="form-control" placeholder="Verification Code">
+{#                    <span style="color: red;">{{ form.code.errors.0 }}</span>#}
+                </div>
+                <div class="col-xs-5">
+                    <img id="image_code" src="/image/code" style="width:125px">
+                </div>
+            </div>
+
         </div>
 
         <input type="submit" value="Sign in" class="btn btn-primary">

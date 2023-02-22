@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from appAuth import views, account
 
+
 urlpatterns = [
     path('', account.login),
     path('admin/', admin.site.urls),
@@ -27,6 +28,8 @@ urlpatterns = [
     path('card/', views.card_info),
 
     path('login/', account.login),
-    path('logout/',account.logout)
+    path('logout/',account.logout),
+    path('image/code', account.get_image_code),
+
 
 ]

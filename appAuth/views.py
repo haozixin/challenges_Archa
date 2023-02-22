@@ -53,4 +53,3 @@ def card_info(request):
         return render(request, 'card_info.html', {'card': card})
 
 
-
